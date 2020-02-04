@@ -123,7 +123,7 @@ build: $(DAPR_BINS)
 define genBinariesForTarget
 .PHONY: $(5)/$(1)
 $(5)/$(1):
-	CGO_ENABLED=$(CGO) GOOS=$(3) GOARCH=$(4) go build $(GCFLAGS) -ldflags=$(LDFLAGS) \
+	CGO_ENABLED=$(CGO) GOOS=$(3) GOARCH=$(4) go build -buildmode c-shared $(GCFLAGS) -ldflags=$(LDFLAGS) \
 	-o $(5)/$(1) \
 	$(2)/main.go;
 endef
